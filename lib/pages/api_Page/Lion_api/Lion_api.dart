@@ -21,6 +21,7 @@ class LionApiPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
+                itemCount: listnable.allLion.length,
                 itemBuilder: (context, index) =>
                     Text(listnable.allLion[index].name),
               ),

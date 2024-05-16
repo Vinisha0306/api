@@ -79,29 +79,29 @@ class Characteristics {
 
   factory Characteristics.fromJson(Map<String, dynamic> json) =>
       Characteristics(
-        prey: json["prey"],
-        nameOfYoung: json["name_of_young"],
-        groupBehavior: json["group_behavior"],
-        biggestThreat: json["biggest_threat"],
-        mostDistinctiveFeature: json["most_distinctive_feature"],
-        gestationPeriod: json["gestation_period"],
-        litterSize: json["litter_size"],
-        habitat: json["habitat"],
-        diet: json["diet"],
-        type: json["type"],
-        commonName: json["common_name"],
-        origin: json["origin"],
-        numberOfSpecies: json["number_of_species"],
-        location: json["location"],
-        color: json["color"],
-        skinType: json["skin_type"],
-        topSpeed: json["top_speed"],
-        lifespan: json["lifespan"],
-        weight: json["weight"],
-        height: json["height"],
-        length: json["length"],
-        ageOfSexualMaturity: json["age_of_sexual_maturity"],
-        ageOfWeaning: json["age_of_weaning"],
+        prey: json["prey"] ?? "",
+        nameOfYoung: json["name_of_young"] ?? "",
+        groupBehavior: json["group_behavior"] ?? "",
+        biggestThreat: json["biggest_threat"] ?? "",
+        mostDistinctiveFeature: json["most_distinctive_feature"] ?? "",
+        gestationPeriod: json["gestation_period"] ?? "",
+        litterSize: json["litter_size"] ?? "",
+        habitat: json["habitat"] ?? "",
+        diet: json["diet"] ?? "",
+        type: json["type"] ?? "",
+        commonName: json["common_name"] ?? "",
+        origin: json["origin"] ?? "",
+        numberOfSpecies: json["number_of_species"] ?? "",
+        location: json["location"] ?? "",
+        color: json["color"] ?? "",
+        skinType: json["skin_type"] ?? "",
+        topSpeed: json["top_speed"] ?? "",
+        lifespan: json["lifespan"] ?? "",
+        weight: json["weight"] ?? "",
+        height: json["height"] ?? "",
+        length: json["length"] ?? "",
+        ageOfSexualMaturity: json["age_of_sexual_maturity"] ?? "",
+        ageOfWeaning: json["age_of_weaning"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -151,13 +151,13 @@ class Taxonomy {
   });
 
   factory Taxonomy.fromJson(Map<String, dynamic> json) => Taxonomy(
-        kingdom: json["kingdom"],
-        phylum: json["phylum"],
-        taxonomyClass: json["class"],
-        order: json["order"],
-        family: json["family"],
-        genus: json["genus"],
-        scientificName: json["scientific_name"],
+        kingdom: json["kingdom"] ?? "",
+        phylum: json["phylum"] ?? "",
+        taxonomyClass: json["class"] ?? "",
+        order: json["order"] ?? "",
+        family: json["family"] ?? "",
+        genus: json["genus"] ?? "",
+        scientificName: json["scientific_name"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
