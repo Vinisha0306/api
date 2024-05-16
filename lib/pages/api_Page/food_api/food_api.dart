@@ -16,7 +16,10 @@ class FoodApiPage extends StatelessWidget {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : Card(),
+          : ListView.builder(
+              itemBuilder: (context, index) =>
+                  Text(mutable.allFood[index].shopName),
+            ),
     );
   }
 }

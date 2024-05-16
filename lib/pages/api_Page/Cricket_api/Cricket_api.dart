@@ -20,25 +20,40 @@ class CricketApiPage extends StatelessWidget {
               )
             : ListView.builder(
                 itemCount: listnable.allCricket.length,
-                itemBuilder: (context, index) => Card(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Text("Series"),
-                          Spacer(),
-                          Text(listnable.allCricket[index].series[0].name),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Text("Date"),
-                          Spacer(),
-                          Text(listnable.allCricket[index].date),
-                        ],
-                      ),
-                    ],
-                  ),
+                itemBuilder: (context, index) => Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          "Series",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(listnable.allCricket[index].series[0].name),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "Date",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(listnable.allCricket[index].date),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
               ),
       ),

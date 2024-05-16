@@ -1,23 +1,31 @@
-import 'package:api/controller/holiDayController.dart';
+import 'package:api/controller/yummlyController.dart';
 import 'package:api/headers.dart';
 import 'package:api/pages/api_Page/Address_api/address_api.dart';
 import 'package:api/pages/api_Page/Cricket_api/Cricket_api.dart';
+import 'package:api/pages/api_Page/Desserts_api/Desserts_api.dart';
 import 'package:api/pages/api_Page/Emoji_api/Emoji_api.dart';
+import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
+import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
+import 'package:api/pages/api_Page/car_api/car_api.dart';
 import 'package:api/pages/api_Page/follower_api/follower_api.dart';
 import 'package:api/pages/api_Page/holiDay_api/holiDay_api.dart';
 import 'package:api/pages/api_Page/jokes_api/jokes_api.dart';
 import 'package:api/pages/api_Page/language_api/language_api.dart';
 import 'package:api/pages/api_Page/linkedIn_api/linkedIn_api.dart';
+import 'package:api/pages/api_Page/monkey_api/monkey_api.dart';
 import 'package:api/pages/api_Page/movie_api/movie_api.dart';
 import 'package:api/pages/api_Page/post_api/post_api.dart';
 import 'package:api/pages/api_Page/product_api/product_api.dart';
 import 'package:api/pages/api_Page/recipe_api/recipe_api.dart';
 import 'package:api/pages/api_Page/rhymeWord_api/rhymeWord_api.dart';
+import 'package:api/pages/api_Page/sport_api/sport_api.dart';
 import 'package:api/pages/api_Page/spotify_api/spotify_api.dart';
+import 'package:api/pages/api_Page/tiger_api/tiger_api.dart';
 import 'package:api/pages/api_Page/university_api/university_api.dart';
 import 'package:api/pages/api_Page/user_api/user_api.dart';
+import 'package:api/pages/api_Page/vehicle_api/vehicle_api.dart';
 import 'package:api/pages/api_Page/workOut_api/workOut_api.dart';
 import 'package:api/pages/api_Page/youtube_api/youtube_api.dart';
 import 'package:api/pages/api_Page/food_api/food_api.dart';
@@ -35,7 +43,7 @@ class AppRoutes {
       'routes': 'user_api_page',
     },
     {
-      'title': 'Post Api',
+      'title': 'Story Api',
       'routes': 'post_api_page',
     },
     {
@@ -110,6 +118,38 @@ class AppRoutes {
       'title': 'RhymeWord Api',
       'routes': 'rhymeWord_api_page',
     },
+    {
+      'title': 'Hospital Api',
+      'routes': 'hospital_api_page',
+    },
+    {
+      'title': 'Sport Players Api',
+      'routes': 'sport_api_page',
+    },
+    {
+      'title': 'Monkey Api',
+      'routes': 'monkey_api_page',
+    },
+    {
+      'title': 'Tiger Api',
+      'routes': 'tiger_api_page',
+    },
+    {
+      'title': 'Car Api',
+      'routes': 'car_api_page',
+    },
+    {
+      'title': 'Vehicle Api',
+      'routes': 'vehicle_api_page',
+    },
+    {
+      'title': 'Yummly Api',
+      'routes': 'yummly_api_page',
+    },
+    {
+      'title': 'Desserts Api',
+      'routes': 'desserts_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -135,5 +175,13 @@ class AppRoutes {
     AppRoutes.ApiOptions[18]['routes']: (context) => EmojiApiPage(),
     AppRoutes.ApiOptions[19]['routes']: (context) => HoliDayApiPage(),
     AppRoutes.ApiOptions[20]['routes']: (context) => RhymeWordApiPage(),
+    AppRoutes.ApiOptions[21]['routes']: (context) => HospitalApiPage(),
+    AppRoutes.ApiOptions[22]['routes']: (context) => SportApiPage(),
+    AppRoutes.ApiOptions[23]['routes']: (context) => MonkeyApiPage(),
+    AppRoutes.ApiOptions[24]['routes']: (context) => TigerApiPage(),
+    AppRoutes.ApiOptions[25]['routes']: (context) => CarApiPage(),
+    AppRoutes.ApiOptions[26]['routes']: (context) => VehicleApiPage(),
+    AppRoutes.ApiOptions[27]['routes']: (context) => YummlyApiPage(),
+    AppRoutes.ApiOptions[28]['routes']: (context) => DessertsApiPage(),
   };
 }

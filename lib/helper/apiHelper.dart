@@ -1,11 +1,17 @@
 import 'package:api/headers.dart';
+import 'package:api/modal/carModal.dart';
 import 'package:api/modal/cricketModal.dart';
 import 'package:api/modal/foodModal.dart';
 import 'package:api/modal/holiDayModal.dart';
 import 'package:api/modal/languageModal.dart';
+import 'package:api/modal/monkeyModal.dart';
+import 'package:api/modal/sportModal.dart';
 import 'package:http/http.dart' as http;
+import '../modal/DessertsModal.dart';
+import '../modal/YummlyModal.dart';
 import '../modal/emojiModal.dart';
 import '../modal/followersModal.dart';
+import '../modal/hospitalModal.dart';
 import '../modal/jokesModal.dart';
 import '../modal/linkedInModal.dart';
 import '../modal/lionModal.dart';
@@ -13,6 +19,7 @@ import '../modal/movieModal.dart';
 import '../modal/quotesModal.dart';
 import '../modal/recipeModal.dart';
 import '../modal/spotifyModal.dart';
+import '../modal/tigerModal.dart';
 import '../modal/universityModal.dart';
 import '../modal/workOutModal.dart';
 import '../modal/youtubeModal.dart';
@@ -54,6 +61,18 @@ class ApiHelper {
   String HoliDayApi =
       "https://api.api-ninjas.com/v1/holidays?country=CA&year=2024&type=public_holiday";
   String RhymeWordApi = "https://api.api-ninjas.com/v1/rhyme?word=rhyme";
+  String HospitalApi =
+      "https://www.communitybenefitinsight.org/api/get_hospitals.php?state=NC";
+  String SportApi =
+      "https://live-golf-data.p.rapidapi.com/tournament?orgId=1&tournId=475&year=2024";
+  String MonkeyApi = "https://api.api-ninjas.com/v1/animals?name=monkey";
+  String TigerApi = "https://api.api-ninjas.com/v1/animals?name=tiger";
+  String CarApi =
+      "https://car-api2.p.rapidapi.com/api/models?sort=id&direction=asc&year=2020&verbose=yes";
+  String VehicleApi =
+      "https://car-api2.p.rapidapi.com/api/vehicle-attributes?attribute=bodies.type";
+  String YummlyApi = "https://yummly2.p.rapidapi.com/categories/list";
+  String DessertsApi = "https://beverages-and-desserts.p.rapidapi.com/desserts";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -144,8 +163,9 @@ class ApiHelper {
 
     if (response.statusCode == 200) {
       Map data = jsonDecode(response.body);
-      List allData = data['data'];
-      allFood = allData.map((e) => Food.fromJson(e)).toList();
+      List allData = jsonDecode(data['data']);
+      List Data = allData[0];
+      allFood = Data.map((e) => Food.fromJson(e)).toList();
     }
 
     log(response.statusCode);
@@ -419,5 +439,144 @@ class ApiHelper {
     log(response.statusCode);
 
     return allRhymeWord;
+  }
+
+  Future<List<Hospital>> getHospitalData() async {
+    List<Hospital> allHospital = [];
+
+    http.Response response = await http.get(
+      Uri.parse(HospitalApi),
+    );
+
+    if (response.statusCode == 200) {
+      List alldata = jsonDecode(response.body);
+      allHospital = alldata.map((e) => Hospital.fromJson(e)).toList();
+    }
+
+    return allHospital;
+  }
+
+  Future<List<Sport>> getSportData() async {
+    List<Sport> allSport = [];
+
+    http.Response response = await http.get(Uri.parse(SportApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'live-golf-data.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['players'];
+      allSport = allData.map((e) => Sport.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allSport;
+  }
+
+  Future<List<Monkey>> getMonkeyData() async {
+    List<Monkey> allMonkey = [];
+
+    http.Response response = await http.get(Uri.parse(MonkeyApi),
+        headers: {'X-Api-Key': 'L6IF6wn+cMJUqqt0JgtLgQ==vmH0ef1zZesBouE7'});
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allMonkey = allData.map((e) => Monkey.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allMonkey;
+  }
+
+  Future<List<Tiger>> getTigerData() async {
+    List<Tiger> allTiger = [];
+
+    http.Response response = await http.get(Uri.parse(TigerApi),
+        headers: {'X-Api-Key': 'L6IF6wn+cMJUqqt0JgtLgQ==vmH0ef1zZesBouE7'});
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allTiger = allData.map((e) => Tiger.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allTiger;
+  }
+
+  Future<List<Car>> getCarData() async {
+    List<Car> allCar = [];
+
+    http.Response response = await http.get(Uri.parse(CarApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'car-api2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['data'];
+      allCar = allData.map((e) => Car.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allCar;
+  }
+
+  Future<List> getVehicleData() async {
+    List allVehicle = [];
+
+    http.Response response = await http.get(Uri.parse(VehicleApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'car-api2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      allVehicle = jsonDecode(response.body);
+    }
+
+    log(response.statusCode);
+
+    return allVehicle;
+  }
+
+  Future<List<Desserts>> getDessertsData() async {
+    List<Desserts> allDesserts = [];
+
+    http.Response response = await http.get(Uri.parse(DessertsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'beverages-and-desserts.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List alldata = jsonDecode(response.body);
+      allDesserts = alldata.map((e) => Desserts.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allDesserts;
+  }
+
+  Future<List<Yummly>> getYummlyData() async {
+    List<Yummly> allYummly = [];
+
+    http.Response response = await http.get(Uri.parse(YummlyApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List alldata = data["browse-categories"];
+      allYummly = alldata.map((e) => Yummly.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allYummly;
   }
 }
