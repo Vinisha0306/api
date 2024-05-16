@@ -22,9 +22,8 @@ class YoutubeApiPage extends StatelessWidget {
               )
             : ListView.builder(
                 itemCount: listnable.allYoutube.length,
-                itemBuilder: (context, index) => Card(
-                  child: Text(listnable.allYoutube[index].video.author.title),
-                ),
+                itemBuilder: (context, index) =>
+                    Text(listnable.allYoutube[index].video.author.title),
               ),
       ),
     );
