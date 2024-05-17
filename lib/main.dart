@@ -1,17 +1,21 @@
 import 'package:api/controller/BhagavadGitacOntroller.dart';
+import 'package:api/controller/BurgerController.dart';
 import 'package:api/controller/CoursesController.dart';
 import 'package:api/controller/DessertsController.dart';
 import 'package:api/controller/HospitalController.dart';
 import 'package:api/controller/HousePlantsController.dart';
 import 'package:api/controller/MarvelController.dart';
+import 'package:api/controller/PizzaController.dart';
 import 'package:api/controller/PlantsCategoryController.dart';
 import 'package:api/controller/VehicleController.dart';
 import 'package:api/controller/addressController.dart';
+import 'package:api/controller/cakeController.dart';
 import 'package:api/controller/cricketController.dart';
 import 'package:api/controller/emojiController.dart';
 import 'package:api/controller/followerController.dart';
 import 'package:api/controller/foodController.dart';
 import 'package:api/controller/holiDayController.dart';
+import 'package:api/controller/japaneseController.dart';
 import 'package:api/controller/jokesController.dart';
 import 'package:api/controller/languagesController.dart';
 import 'package:api/controller/linkedInController.dart';
@@ -70,6 +74,10 @@ void main() {
         ChangeNotifierProvider(create: (context) => marvelController()),
         ChangeNotifierProvider(create: (context) => HousePlantsController()),
         ChangeNotifierProvider(create: (context) => PlantsCategoryController()),
+        ChangeNotifierProvider(create: (context) => CakeController()),
+        ChangeNotifierProvider(create: (context) => BurgerController()),
+        ChangeNotifierProvider(create: (context) => PizzaController()),
+        ChangeNotifierProvider(create: (context) => JapaneseController()),
       ],
       child: const MyApp(),
     ),

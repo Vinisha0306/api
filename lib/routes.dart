@@ -2,14 +2,18 @@ import 'package:api/controller/yummlyController.dart';
 import 'package:api/headers.dart';
 import 'package:api/pages/api_Page/Address_api/address_api.dart';
 import 'package:api/pages/api_Page/BhagavadGita_api/BhagavadGita_api.dart';
+import 'package:api/pages/api_Page/Burger_api/Burger_api.dart';
+import 'package:api/pages/api_Page/Cake_api/Cake_api.dart';
 import 'package:api/pages/api_Page/Courses_api/Courses_api.dart';
 import 'package:api/pages/api_Page/Cricket_api/Cricket_api.dart';
 import 'package:api/pages/api_Page/Desserts_api/Desserts_api.dart';
 import 'package:api/pages/api_Page/Emoji_api/Emoji_api.dart';
 import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
 import 'package:api/pages/api_Page/HousePlants_api/HousePlants_api.dart';
+import 'package:api/pages/api_Page/Japanese_api/Japanese_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
 import 'package:api/pages/api_Page/Marvel_api/marvel_api.dart';
+import 'package:api/pages/api_Page/Pizza_api/Pizza_api.dart';
 import 'package:api/pages/api_Page/PlantsCategory_api/PlantsCategory_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
 import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
@@ -175,6 +179,22 @@ class AppRoutes {
       'title': 'Plants Category Api',
       'routes': 'plantscategory_api_page',
     },
+    {
+      'title': 'Cake Api',
+      'routes': 'Cake_api_page',
+    },
+    {
+      'title': 'Burger Api',
+      'routes': 'burger_api_page',
+    },
+    {
+      'title': 'Pizza Api',
+      'routes': 'pizza_api_page',
+    },
+    {
+      'title': 'Japanese Language Api',
+      'routes': 'japanese_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -213,5 +233,9 @@ class AppRoutes {
     AppRoutes.ApiOptions[31]['routes']: (context) => MarvelApiPage(),
     AppRoutes.ApiOptions[32]['routes']: (context) => HousePlantsApiPage(),
     AppRoutes.ApiOptions[33]['routes']: (context) => PlantsCategoryApiPage(),
+    AppRoutes.ApiOptions[34]['routes']: (context) => CakeApiPage(),
+    AppRoutes.ApiOptions[35]['routes']: (context) => BurgerApiPage(),
+    AppRoutes.ApiOptions[36]['routes']: (context) => PizzaApiPage(),
+    AppRoutes.ApiOptions[37]['routes']: (context) => JapaneseApiPage(),
   };
 }

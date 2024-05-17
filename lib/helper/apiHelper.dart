@@ -1,5 +1,6 @@
 import 'package:api/headers.dart';
 import 'package:api/modal/HousePlantsModal.dart';
+import 'package:api/modal/JapaneseModal.dart';
 import 'package:api/modal/PlantsCategoryModal.dart';
 import 'package:api/modal/carModal.dart';
 import 'package:api/modal/cricketModal.dart';
@@ -9,6 +10,8 @@ import 'package:api/modal/languageModal.dart';
 import 'package:api/modal/monkeyModal.dart';
 import 'package:api/modal/sportModal.dart';
 import 'package:http/http.dart' as http;
+import '../modal/BurgerModal.dart';
+import '../modal/CakeModal.dart';
 import '../modal/CoursesModal.dart';
 import '../modal/DessertsModal.dart';
 import '../modal/MarvelModal.dart';
@@ -21,6 +24,7 @@ import '../modal/jokesModal.dart';
 import '../modal/linkedInModal.dart';
 import '../modal/lionModal.dart';
 import '../modal/movieModal.dart';
+import '../modal/pizzaModal.dart';
 import '../modal/quotesModal.dart';
 import '../modal/recipeModal.dart';
 import '../modal/spotifyModal.dart';
@@ -86,6 +90,11 @@ class ApiHelper {
   String HousePlantsApi = "https://house-plants2.p.rapidapi.com/categories";
   String PlantsCategoryApi =
       "https://house-plants2.p.rapidapi.com/category/Fern";
+  String cakeApi = "https://the-birthday-cake-db.p.rapidapi.com/";
+  String BurgerApi = "https://burgers-hub.p.rapidapi.com/burgers";
+  String PizzaApi = "https://pizza-and-desserts.p.rapidapi.com/pizzas";
+  String JapaneseApi =
+      "https://japanese-alphabet.p.rapidapi.com/v1.0/language?language=hiragana";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -676,7 +685,7 @@ class ApiHelper {
     http.Response response =
         await http.get(Uri.parse(PlantsCategoryApi), headers: {
       'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
-      'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com'
+      'X-RapidAPI-Host': 'the-birthday-cake-db.p.rapidapi.com'
     });
 
     if (response.statusCode == 200) {
@@ -688,5 +697,81 @@ class ApiHelper {
     log(response.statusCode);
 
     return allPlantsCategory;
+  }
+
+  Future<List<Cake>> getCakeData() async {
+    List<Cake> allCake = [];
+
+    http.Response response = await http.get(Uri.parse(cakeApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'the-birthday-cake-db.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allCake = allData.map((e) => Cake.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allCake;
+  }
+
+  Future<List<Burger>> getBurgerData() async {
+    List<Burger> allBurger = [];
+
+    http.Response response = await http.get(Uri.parse(BurgerApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'burgers-hub.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allBurger = allData.map((e) => Burger.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allBurger;
+  }
+
+  Future<List<Pizza>> getPizzaData() async {
+    List<Pizza> allPizza = [];
+
+    http.Response response = await http.get(Uri.parse(PizzaApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'pizza-and-desserts.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allPizza = allData.map((e) => Pizza.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allPizza;
+  }
+
+  Future<List<JapaneseLanguage>> getJapaneseData() async {
+    List<JapaneseLanguage> allJapaneseLanguage = [];
+
+    http.Response response = await http.get(Uri.parse(JapaneseApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'japanese-alphabet.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allDa = data['data'];
+      Map all = allDa[0];
+      List allData = all['content'];
+      allJapaneseLanguage =
+          allData.map((e) => JapaneseLanguage.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allJapaneseLanguage;
   }
 }

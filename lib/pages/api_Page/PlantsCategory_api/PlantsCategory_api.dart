@@ -12,7 +12,7 @@ class PlantsCategoryApiPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppRoutes.ApiOptions[32]['title'],
+          AppRoutes.ApiOptions[33]['title'],
         ),
       ),
       body: Padding(
