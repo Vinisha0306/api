@@ -12,14 +12,18 @@ class FoodApiPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppRoutes.ApiOptions[5]['title']),
       ),
-      body: mutable.allFood.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              itemBuilder: (context, index) =>
-                  Text(mutable.allFood[index].shopName),
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: mutable.allFood.isEmpty
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: mutable.allFood.length,
+                itemBuilder: (context, index) =>
+                    Text(mutable.allFood[index].shopName),
+              ),
+      ),
     );
   }
 }

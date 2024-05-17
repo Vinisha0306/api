@@ -21,6 +21,7 @@ class HospitalApiPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
+                itemCount: listnable.allHospital.length,
                 itemBuilder: (context, index) => Text(
                   listnable.allHospital[index].name,
                 ),

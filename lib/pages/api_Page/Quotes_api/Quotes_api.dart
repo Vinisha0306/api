@@ -21,6 +21,7 @@ class QuotesApiPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
+                itemCount: listnable.allQuotes.length,
                 itemBuilder: (context, index) => Card(
                   child: Text(
                     listnable.allQuotes[index].quote,

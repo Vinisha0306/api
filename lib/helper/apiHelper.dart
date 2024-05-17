@@ -1,4 +1,6 @@
 import 'package:api/headers.dart';
+import 'package:api/modal/HousePlantsModal.dart';
+import 'package:api/modal/PlantsCategoryModal.dart';
 import 'package:api/modal/carModal.dart';
 import 'package:api/modal/cricketModal.dart';
 import 'package:api/modal/foodModal.dart';
@@ -7,8 +9,11 @@ import 'package:api/modal/languageModal.dart';
 import 'package:api/modal/monkeyModal.dart';
 import 'package:api/modal/sportModal.dart';
 import 'package:http/http.dart' as http;
+import '../modal/CoursesModal.dart';
 import '../modal/DessertsModal.dart';
+import '../modal/MarvelModal.dart';
 import '../modal/YummlyModal.dart';
+import '../modal/bhagavadGitaModal.dart';
 import '../modal/emojiModal.dart';
 import '../modal/followersModal.dart';
 import '../modal/hospitalModal.dart';
@@ -73,6 +78,14 @@ class ApiHelper {
       "https://car-api2.p.rapidapi.com/api/vehicle-attributes?attribute=bodies.type";
   String YummlyApi = "https://yummly2.p.rapidapi.com/categories/list";
   String DessertsApi = "https://beverages-and-desserts.p.rapidapi.com/desserts";
+  String BhagavadGitaApi =
+      "https://bhagavad-gita3.p.rapidapi.com/v2/chapters/?limit=18";
+  String CoursesApi = "https://courses9.p.rapidapi.com/api/v6/website/labels";
+  String MarvelApi =
+      "https://marvel-heroic-api-unlock-the-mcu-legendary-characters.p.rapidapi.com/characters";
+  String HousePlantsApi = "https://house-plants2.p.rapidapi.com/categories";
+  String PlantsCategoryApi =
+      "https://house-plants2.p.rapidapi.com/category/Fern";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -578,5 +591,102 @@ class ApiHelper {
     log(response.statusCode);
 
     return allYummly;
+  }
+
+  Future<List<BhagavadGita>> getBhagavadGitaData() async {
+    List<BhagavadGita> allBhagavadGita = [];
+
+    http.Response response =
+        await http.get(Uri.parse(BhagavadGitaApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List alldata = jsonDecode(response.body);
+      allBhagavadGita = alldata.map((e) => BhagavadGita.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allBhagavadGita;
+  }
+
+  Future<List<Courses>> getCoursesData() async {
+    List<Courses> allCourses = [];
+
+    http.Response response = await http.get(Uri.parse(CoursesApi), headers: {
+      'Content-Type': 'application/json',
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'courses9.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List alldata = data['data'];
+      allCourses = alldata.map((e) => Courses.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allCourses;
+  }
+
+  Future<List<Marvel>> getMarvelData() async {
+    List<Marvel> allMarvel = [];
+
+    http.Response response = await http.get(Uri.parse(MarvelApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host':
+          'marvel-heroic-api-unlock-the-mcu-legendary-characters.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allMarvel = allData.map((e) => Marvel.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allMarvel;
+  }
+
+  Future<List<HousePlants>> getHousePlantsData() async {
+    List<HousePlants> allHousePlants = [];
+
+    http.Response response =
+        await http.get(Uri.parse(HousePlantsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allHousePlants = allData.map((e) => HousePlants.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allHousePlants;
+  }
+
+  Future<List<PlantsCategory>> getPlantsCategoryData() async {
+    List<PlantsCategory> allPlantsCategory = [];
+
+    http.Response response =
+        await http.get(Uri.parse(PlantsCategoryApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allPlantsCategory =
+          allData.map((e) => PlantsCategory.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allPlantsCategory;
   }
 }

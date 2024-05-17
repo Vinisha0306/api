@@ -1,5 +1,10 @@
+import 'package:api/controller/BhagavadGitacOntroller.dart';
+import 'package:api/controller/CoursesController.dart';
 import 'package:api/controller/DessertsController.dart';
 import 'package:api/controller/HospitalController.dart';
+import 'package:api/controller/HousePlantsController.dart';
+import 'package:api/controller/MarvelController.dart';
+import 'package:api/controller/PlantsCategoryController.dart';
 import 'package:api/controller/VehicleController.dart';
 import 'package:api/controller/addressController.dart';
 import 'package:api/controller/cricketController.dart';
@@ -60,6 +65,11 @@ void main() {
         ChangeNotifierProvider(create: (context) => VehicleController()),
         ChangeNotifierProvider(create: (context) => YummlyController()),
         ChangeNotifierProvider(create: (context) => DessertsController()),
+        ChangeNotifierProvider(create: (context) => BhagavadGitaController()),
+        ChangeNotifierProvider(create: (context) => CoursesController()),
+        ChangeNotifierProvider(create: (context) => marvelController()),
+        ChangeNotifierProvider(create: (context) => HousePlantsController()),
+        ChangeNotifierProvider(create: (context) => PlantsCategoryController()),
       ],
       child: const MyApp(),
     ),

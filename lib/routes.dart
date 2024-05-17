@@ -1,11 +1,16 @@
 import 'package:api/controller/yummlyController.dart';
 import 'package:api/headers.dart';
 import 'package:api/pages/api_Page/Address_api/address_api.dart';
+import 'package:api/pages/api_Page/BhagavadGita_api/BhagavadGita_api.dart';
+import 'package:api/pages/api_Page/Courses_api/Courses_api.dart';
 import 'package:api/pages/api_Page/Cricket_api/Cricket_api.dart';
 import 'package:api/pages/api_Page/Desserts_api/Desserts_api.dart';
 import 'package:api/pages/api_Page/Emoji_api/Emoji_api.dart';
 import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
+import 'package:api/pages/api_Page/HousePlants_api/HousePlants_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
+import 'package:api/pages/api_Page/Marvel_api/marvel_api.dart';
+import 'package:api/pages/api_Page/PlantsCategory_api/PlantsCategory_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
 import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
 import 'package:api/pages/api_Page/car_api/car_api.dart';
@@ -150,6 +155,26 @@ class AppRoutes {
       'title': 'Desserts Api',
       'routes': 'desserts_api_page',
     },
+    {
+      'title': 'Bhagavad Gita Api',
+      'routes': 'bhagavadgita_api_page',
+    },
+    {
+      'title': 'Courses Api',
+      'routes': 'courses_api_page',
+    },
+    {
+      'title': 'Marvel Api',
+      'routes': 'marvel_api_page',
+    },
+    {
+      'title': 'House Plants Api',
+      'routes': 'houseplants_api_page',
+    },
+    {
+      'title': 'Plants Category Api',
+      'routes': 'plantscategory_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -183,5 +208,10 @@ class AppRoutes {
     AppRoutes.ApiOptions[26]['routes']: (context) => VehicleApiPage(),
     AppRoutes.ApiOptions[27]['routes']: (context) => YummlyApiPage(),
     AppRoutes.ApiOptions[28]['routes']: (context) => DessertsApiPage(),
+    AppRoutes.ApiOptions[29]['routes']: (context) => BhagavadGitaApiPage(),
+    AppRoutes.ApiOptions[30]['routes']: (context) => CoursesApiPage(),
+    AppRoutes.ApiOptions[31]['routes']: (context) => MarvelApiPage(),
+    AppRoutes.ApiOptions[32]['routes']: (context) => HousePlantsApiPage(),
+    AppRoutes.ApiOptions[33]['routes']: (context) => PlantsCategoryApiPage(),
   };
 }
