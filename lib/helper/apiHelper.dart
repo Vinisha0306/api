@@ -14,7 +14,10 @@ import '../modal/BurgerModal.dart';
 import '../modal/CakeModal.dart';
 import '../modal/CoursesModal.dart';
 import '../modal/DessertsModal.dart';
+import '../modal/KoreanRestaurantsModal.dart';
 import '../modal/MarvelModal.dart';
+import '../modal/PlayerCardsModal.dart';
+import '../modal/WeaponsModal.dart';
 import '../modal/YummlyModal.dart';
 import '../modal/bhagavadGitaModal.dart';
 import '../modal/emojiModal.dart';
@@ -95,6 +98,10 @@ class ApiHelper {
   String PizzaApi = "https://pizza-and-desserts.p.rapidapi.com/pizzas";
   String JapaneseApi =
       "https://japanese-alphabet.p.rapidapi.com/v1.0/language?language=hiragana";
+  String KoreanRestaurantsApi =
+      "https://halal-korean-restaurants-api.p.rapidapi.com/restaurants";
+  String WeaponsApi = "https://valorant-api.com/v1/weapons";
+  String PlayerCardsApi = "https://valorant-api.com/v1/playercards";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -773,5 +780,59 @@ class ApiHelper {
     log(response.statusCode);
 
     return allJapaneseLanguage;
+  }
+
+  Future<List<KoreanRestaurants>> getKoreanRestaurantsData() async {
+    List<KoreanRestaurants> allKoreanRestaurants = [];
+
+    http.Response response =
+        await http.get(Uri.parse(KoreanRestaurantsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'halal-korean-restaurants-api.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List data = jsonDecode(response.body);
+      Map all = data[0];
+      List allData = all['restaurant'];
+      allKoreanRestaurants =
+          allData.map((e) => KoreanRestaurants.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allKoreanRestaurants;
+  }
+
+  Future<List<Weapons>> getWeaponsData() async {
+    List<Weapons> allWeapons = [];
+
+    http.Response response = await http.get(Uri.parse(WeaponsApi));
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['data'];
+      allWeapons = allData.map((e) => Weapons.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allWeapons;
+  }
+
+  Future<List<PlayerCards>> getPlayerCardsData() async {
+    List<PlayerCards> allPlayerCards = [];
+
+    http.Response response = await http.get(Uri.parse(PlayerCardsApi));
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['data'];
+      allPlayerCards = allData.map((e) => PlayerCards.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allPlayerCards;
   }
 }

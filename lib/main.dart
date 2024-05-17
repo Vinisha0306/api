@@ -4,10 +4,12 @@ import 'package:api/controller/CoursesController.dart';
 import 'package:api/controller/DessertsController.dart';
 import 'package:api/controller/HospitalController.dart';
 import 'package:api/controller/HousePlantsController.dart';
+import 'package:api/controller/KoreanRestaurantsController.dart';
 import 'package:api/controller/MarvelController.dart';
 import 'package:api/controller/PizzaController.dart';
 import 'package:api/controller/PlantsCategoryController.dart';
 import 'package:api/controller/VehicleController.dart';
+import 'package:api/controller/WeaponsController.dart';
 import 'package:api/controller/addressController.dart';
 import 'package:api/controller/cakeController.dart';
 import 'package:api/controller/cricketController.dart';
@@ -78,6 +80,9 @@ void main() {
         ChangeNotifierProvider(create: (context) => BurgerController()),
         ChangeNotifierProvider(create: (context) => PizzaController()),
         ChangeNotifierProvider(create: (context) => JapaneseController()),
+        ChangeNotifierProvider(
+            create: (context) => KoreanRestaurantsController()),
+        ChangeNotifierProvider(create: (context) => WeaponsController()),
       ],
       child: const MyApp(),
     ),

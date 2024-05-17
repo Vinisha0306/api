@@ -11,11 +11,13 @@ import 'package:api/pages/api_Page/Emoji_api/Emoji_api.dart';
 import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
 import 'package:api/pages/api_Page/HousePlants_api/HousePlants_api.dart';
 import 'package:api/pages/api_Page/Japanese_api/Japanese_api.dart';
+import 'package:api/pages/api_Page/KoreanRestaurants_api/KoreanRestaurants_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
 import 'package:api/pages/api_Page/Marvel_api/marvel_api.dart';
 import 'package:api/pages/api_Page/Pizza_api/Pizza_api.dart';
 import 'package:api/pages/api_Page/PlantsCategory_api/PlantsCategory_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
+import 'package:api/pages/api_Page/Weapons_api/Weapons_api.dart';
 import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
 import 'package:api/pages/api_Page/car_api/car_api.dart';
 import 'package:api/pages/api_Page/follower_api/follower_api.dart';
@@ -195,6 +197,14 @@ class AppRoutes {
       'title': 'Japanese Language Api',
       'routes': 'japanese_api_page',
     },
+    {
+      'title': 'Korean Restaurants Api',
+      'routes': 'KoreanRestaurants_api_page',
+    },
+    {
+      'title': 'Weapons Api',
+      'routes': 'Weapons_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -237,5 +247,7 @@ class AppRoutes {
     AppRoutes.ApiOptions[35]['routes']: (context) => BurgerApiPage(),
     AppRoutes.ApiOptions[36]['routes']: (context) => PizzaApiPage(),
     AppRoutes.ApiOptions[37]['routes']: (context) => JapaneseApiPage(),
+    AppRoutes.ApiOptions[38]['routes']: (context) => KoreanRestaurantsApiPage(),
+    AppRoutes.ApiOptions[39]['routes']: (context) => WeaponsApiPage(),
   };
 }
