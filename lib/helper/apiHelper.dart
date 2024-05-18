@@ -1,6 +1,8 @@
 import 'package:api/headers.dart';
+import 'package:api/modal/HealsthNewsModal.dart';
 import 'package:api/modal/HousePlantsModal.dart';
 import 'package:api/modal/JapaneseModal.dart';
+import 'package:api/modal/PhoneModal.dart';
 import 'package:api/modal/PlantsCategoryModal.dart';
 import 'package:api/modal/carModal.dart';
 import 'package:api/modal/cricketModal.dart';
@@ -15,6 +17,7 @@ import '../modal/CakeModal.dart';
 import '../modal/CoursesModal.dart';
 import '../modal/DessertsModal.dart';
 import '../modal/FreelancerModal.dart';
+import '../modal/GoogleNewsModal.dart';
 import '../modal/JobsModal.dart';
 import '../modal/KoreanRestaurantsModal.dart';
 import '../modal/MarvelModal.dart';
@@ -110,6 +113,10 @@ class ApiHelper {
   String JobsApi =
       "https://jobs-api14.p.rapidapi.com/list?query=Mobile Devloper&location=india&distance=1.0&language=en_GB&remoteOnly =false&datePosted=month&employmentTypes=fulltime;parttime;intern;contractor";
   String FreelancerApi = "https://freelancer-api.p.rapidapi.com/api/find-job";
+  String PhoneApi = "https://mobile-phones2.p.rapidapi.com/6/phones";
+  String GoogleNewsApi =
+      "https://google-news13.p.rapidapi.com/entertainment?lr=en-US";
+  String HealthNewsApi = "https://google-news13.p.rapidapi.com/health?lr=en-US";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -900,5 +907,62 @@ class ApiHelper {
     log(response.statusCode);
 
     return allFreelancer;
+  }
+
+  Future<List<Phone>> getPhoneData() async {
+    List<Phone> allPhone = [];
+
+    http.Response response = await http.get(Uri.parse(PhoneApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'mobile-phones2.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['data'];
+      allPhone = allData.map((e) => Phone.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allPhone;
+  }
+
+  Future<List<GoogleNews>> getGoogleNewsData() async {
+    List<GoogleNews> allGoogleNews = [];
+
+    http.Response response = await http.get(Uri.parse(GoogleNewsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['items'];
+      allGoogleNews = allData.map((e) => GoogleNews.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allGoogleNews;
+  }
+
+  Future<List<HealthNews>> getHealthNewsData() async {
+    List<HealthNews> allHealthNews = [];
+
+    http.Response response = await http.get(Uri.parse(HealthNewsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['items'];
+      allHealthNews = allData.map((e) => HealthNews.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allHealthNews;
   }
 }

@@ -3,11 +3,14 @@ import 'package:api/controller/BurgerController.dart';
 import 'package:api/controller/CoursesController.dart';
 import 'package:api/controller/DessertsController.dart';
 import 'package:api/controller/FreelancerController.dart';
+import 'package:api/controller/GoogleNewsController.dart';
+import 'package:api/controller/HealthNewsControoler.dart';
 import 'package:api/controller/HospitalController.dart';
 import 'package:api/controller/HousePlantsController.dart';
 import 'package:api/controller/JobsController.dart';
 import 'package:api/controller/KoreanRestaurantsController.dart';
 import 'package:api/controller/MarvelController.dart';
+import 'package:api/controller/PhoneController.dart';
 import 'package:api/controller/PizzaController.dart';
 import 'package:api/controller/PlantsCategoryController.dart';
 import 'package:api/controller/PlayerCardsController.dart';
@@ -91,6 +94,9 @@ void main() {
         ChangeNotifierProvider(create: (context) => WeatherController()),
         ChangeNotifierProvider(create: (context) => JobsController()),
         ChangeNotifierProvider(create: (context) => FreelancerController()),
+        ChangeNotifierProvider(create: (context) => PhoneController()),
+        ChangeNotifierProvider(create: (context) => GoogleNewsController()),
+        ChangeNotifierProvider(create: (context) => HealthNewsController()),
       ],
       child: const MyApp(),
     ),
