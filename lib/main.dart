@@ -2,14 +2,18 @@ import 'package:api/controller/BhagavadGitacOntroller.dart';
 import 'package:api/controller/BurgerController.dart';
 import 'package:api/controller/CoursesController.dart';
 import 'package:api/controller/DessertsController.dart';
+import 'package:api/controller/FreelancerController.dart';
 import 'package:api/controller/HospitalController.dart';
 import 'package:api/controller/HousePlantsController.dart';
+import 'package:api/controller/JobsController.dart';
 import 'package:api/controller/KoreanRestaurantsController.dart';
 import 'package:api/controller/MarvelController.dart';
 import 'package:api/controller/PizzaController.dart';
 import 'package:api/controller/PlantsCategoryController.dart';
+import 'package:api/controller/PlayerCardsController.dart';
 import 'package:api/controller/VehicleController.dart';
 import 'package:api/controller/WeaponsController.dart';
+import 'package:api/controller/WeatherController.dart';
 import 'package:api/controller/addressController.dart';
 import 'package:api/controller/cakeController.dart';
 import 'package:api/controller/cricketController.dart';
@@ -83,6 +87,10 @@ void main() {
         ChangeNotifierProvider(
             create: (context) => KoreanRestaurantsController()),
         ChangeNotifierProvider(create: (context) => WeaponsController()),
+        ChangeNotifierProvider(create: (context) => PlayerCardsController()),
+        ChangeNotifierProvider(create: (context) => WeatherController()),
+        ChangeNotifierProvider(create: (context) => JobsController()),
+        ChangeNotifierProvider(create: (context) => FreelancerController()),
       ],
       child: const MyApp(),
     ),

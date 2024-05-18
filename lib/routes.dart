@@ -8,16 +8,20 @@ import 'package:api/pages/api_Page/Courses_api/Courses_api.dart';
 import 'package:api/pages/api_Page/Cricket_api/Cricket_api.dart';
 import 'package:api/pages/api_Page/Desserts_api/Desserts_api.dart';
 import 'package:api/pages/api_Page/Emoji_api/Emoji_api.dart';
+import 'package:api/pages/api_Page/Freelancer_api/Freelancer_api.dart';
 import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
 import 'package:api/pages/api_Page/HousePlants_api/HousePlants_api.dart';
 import 'package:api/pages/api_Page/Japanese_api/Japanese_api.dart';
+import 'package:api/pages/api_Page/Jobs_api/Jobs_api.dart';
 import 'package:api/pages/api_Page/KoreanRestaurants_api/KoreanRestaurants_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
 import 'package:api/pages/api_Page/Marvel_api/marvel_api.dart';
 import 'package:api/pages/api_Page/Pizza_api/Pizza_api.dart';
 import 'package:api/pages/api_Page/PlantsCategory_api/PlantsCategory_api.dart';
+import 'package:api/pages/api_Page/PlayerCards_api/PlayerCards_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
 import 'package:api/pages/api_Page/Weapons_api/Weapons_api.dart';
+import 'package:api/pages/api_Page/Weather_api/Weather_api.dart';
 import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
 import 'package:api/pages/api_Page/car_api/car_api.dart';
 import 'package:api/pages/api_Page/follower_api/follower_api.dart';
@@ -205,6 +209,22 @@ class AppRoutes {
       'title': 'Weapons Api',
       'routes': 'Weapons_api_page',
     },
+    {
+      'title': 'PlayerCards Api',
+      'routes': 'PlayerCards_api_page',
+    },
+    {
+      'title': 'Weather Api',
+      'routes': 'Weather_api_page',
+    },
+    {
+      'title': 'Jobs Api',
+      'routes': 'jobs_api_page',
+    },
+    {
+      'title': 'Freelancer Api',
+      'routes': 'Freelancer_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -249,5 +269,9 @@ class AppRoutes {
     AppRoutes.ApiOptions[37]['routes']: (context) => JapaneseApiPage(),
     AppRoutes.ApiOptions[38]['routes']: (context) => KoreanRestaurantsApiPage(),
     AppRoutes.ApiOptions[39]['routes']: (context) => WeaponsApiPage(),
+    AppRoutes.ApiOptions[40]['routes']: (context) => PlayerCardsApiPage(),
+    AppRoutes.ApiOptions[41]['routes']: (context) => WeatherApiPage(),
+    AppRoutes.ApiOptions[42]['routes']: (context) => JobsApiPage(),
+    AppRoutes.ApiOptions[43]['routes']: (context) => FreelancerApiPage(),
   };
 }

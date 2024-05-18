@@ -9,7 +9,7 @@ class PostApiPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Post Api"),
+        title: Text(AppRoutes.ApiOptions[2]['title']),
       ),
       body: unmutable.allPost.isEmpty
           ? const Center(

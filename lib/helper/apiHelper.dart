@@ -14,10 +14,13 @@ import '../modal/BurgerModal.dart';
 import '../modal/CakeModal.dart';
 import '../modal/CoursesModal.dart';
 import '../modal/DessertsModal.dart';
+import '../modal/FreelancerModal.dart';
+import '../modal/JobsModal.dart';
 import '../modal/KoreanRestaurantsModal.dart';
 import '../modal/MarvelModal.dart';
 import '../modal/PlayerCardsModal.dart';
 import '../modal/WeaponsModal.dart';
+import '../modal/WeatherModal.dart';
 import '../modal/YummlyModal.dart';
 import '../modal/bhagavadGitaModal.dart';
 import '../modal/emojiModal.dart';
@@ -102,6 +105,11 @@ class ApiHelper {
       "https://halal-korean-restaurants-api.p.rapidapi.com/restaurants";
   String WeaponsApi = "https://valorant-api.com/v1/weapons";
   String PlayerCardsApi = "https://valorant-api.com/v1/playercards";
+  String WeatherApi =
+      "https://forecast9.p.rapidapi.com/rapidapi/forecast/Berlin/summary/";
+  String JobsApi =
+      "https://jobs-api14.p.rapidapi.com/list?query=Mobile Devloper&location=india&distance=1.0&language=en_GB&remoteOnly =false&datePosted=month&employmentTypes=fulltime;parttime;intern;contractor";
+  String FreelancerApi = "https://freelancer-api.p.rapidapi.com/api/find-job";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -834,5 +842,63 @@ class ApiHelper {
     log(response.statusCode);
 
     return allPlayerCards;
+  }
+
+  Future<List<Weather>> getWeatherData() async {
+    List<Weather> allWeather = [];
+
+    http.Response response = await http.get(Uri.parse(WeatherApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'forecast9.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      Map Data = data['forecast'];
+      List allData = Data['items'];
+      allWeather = allData.map((e) => Weather.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allWeather;
+  }
+
+  Future<List<Jobs>> getJobsData() async {
+    List<Jobs> allJobs = [];
+
+    http.Response response = await http.get(Uri.parse(JobsApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'jobs-api14.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['jobs'];
+      allJobs = allData.map((e) => Jobs.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allJobs;
+  }
+
+  Future<List<Freelancer>> getFreelancerData() async {
+    List<Freelancer> allFreelancer = [];
+
+    http.Response response = await http.get(Uri.parse(FreelancerApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'freelancer-api.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map data = jsonDecode(response.body);
+      List allData = data['posts'];
+      allFreelancer = allData.map((e) => Freelancer.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allFreelancer;
   }
 }
