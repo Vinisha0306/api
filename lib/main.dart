@@ -8,12 +8,14 @@ import 'package:api/controller/HealthNewsControoler.dart';
 import 'package:api/controller/HospitalController.dart';
 import 'package:api/controller/HousePlantsController.dart';
 import 'package:api/controller/JobsController.dart';
+import 'package:api/controller/KeywordInsightController.dart';
 import 'package:api/controller/KoreanRestaurantsController.dart';
 import 'package:api/controller/MarvelController.dart';
 import 'package:api/controller/PhoneController.dart';
 import 'package:api/controller/PizzaController.dart';
 import 'package:api/controller/PlantsCategoryController.dart';
 import 'package:api/controller/PlayerCardsController.dart';
+import 'package:api/controller/RobloxController.dart';
 import 'package:api/controller/VehicleController.dart';
 import 'package:api/controller/WeaponsController.dart';
 import 'package:api/controller/WeatherController.dart';
@@ -97,6 +99,8 @@ void main() {
         ChangeNotifierProvider(create: (context) => PhoneController()),
         ChangeNotifierProvider(create: (context) => GoogleNewsController()),
         ChangeNotifierProvider(create: (context) => HealthNewsController()),
+        ChangeNotifierProvider(create: (context) => KeywordInsightController()),
+        ChangeNotifierProvider(create: (context) => RobloxController()),
       ],
       child: const MyApp(),
     ),

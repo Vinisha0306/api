@@ -1,4 +1,5 @@
 import 'package:api/controller/GoogleNewsController.dart';
+import 'package:api/controller/KeywordInsightController.dart';
 import 'package:api/controller/yummlyController.dart';
 import 'package:api/headers.dart';
 import 'package:api/pages/api_Page/Address_api/address_api.dart';
@@ -16,6 +17,7 @@ import 'package:api/pages/api_Page/Hospital_api/Hospital_api.dart';
 import 'package:api/pages/api_Page/HousePlants_api/HousePlants_api.dart';
 import 'package:api/pages/api_Page/Japanese_api/Japanese_api.dart';
 import 'package:api/pages/api_Page/Jobs_api/Jobs_api.dart';
+import 'package:api/pages/api_Page/KeywordInsight_api/KeywordInsight_api.dart';
 import 'package:api/pages/api_Page/KoreanRestaurants_api/KoreanRestaurants_api.dart';
 import 'package:api/pages/api_Page/Lion_api/Lion_api.dart';
 import 'package:api/pages/api_Page/Marvel_api/marvel_api.dart';
@@ -24,6 +26,7 @@ import 'package:api/pages/api_Page/Pizza_api/Pizza_api.dart';
 import 'package:api/pages/api_Page/PlantsCategory_api/PlantsCategory_api.dart';
 import 'package:api/pages/api_Page/PlayerCards_api/PlayerCards_api.dart';
 import 'package:api/pages/api_Page/Quotes_api/Quotes_api.dart';
+import 'package:api/pages/api_Page/Roblox_api/Roblox_api.dart';
 import 'package:api/pages/api_Page/Weapons_api/Weapons_api.dart';
 import 'package:api/pages/api_Page/Weather_api/Weather_api.dart';
 import 'package:api/pages/api_Page/Yummly_api/Yummly_api.dart';
@@ -241,6 +244,14 @@ class AppRoutes {
       'title': 'Health News Api',
       'routes': 'HealthNews_api_page',
     },
+    {
+      'title': 'Keyword Insight Api',
+      'routes': 'KeywordInsight_api_page',
+    },
+    {
+      'title': 'Roblox Api',
+      'routes': 'Roblox_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -292,5 +303,7 @@ class AppRoutes {
     AppRoutes.ApiOptions[44]['routes']: (context) => PhoneApiPage(),
     AppRoutes.ApiOptions[45]['routes']: (context) => GoogleNewsApiPage(),
     AppRoutes.ApiOptions[46]['routes']: (context) => HealthNewsApiPage(),
+    AppRoutes.ApiOptions[47]['routes']: (context) => KeywordInsightApiPage(),
+    AppRoutes.ApiOptions[48]['routes']: (context) => RobloxApiPage(),
   };
 }

@@ -4,6 +4,7 @@ import 'package:api/modal/HousePlantsModal.dart';
 import 'package:api/modal/JapaneseModal.dart';
 import 'package:api/modal/PhoneModal.dart';
 import 'package:api/modal/PlantsCategoryModal.dart';
+import 'package:api/modal/RobloxModal.dart';
 import 'package:api/modal/carModal.dart';
 import 'package:api/modal/cricketModal.dart';
 import 'package:api/modal/foodModal.dart';
@@ -19,6 +20,7 @@ import '../modal/DessertsModal.dart';
 import '../modal/FreelancerModal.dart';
 import '../modal/GoogleNewsModal.dart';
 import '../modal/JobsModal.dart';
+import '../modal/KeywordInsightModal.dart';
 import '../modal/KoreanRestaurantsModal.dart';
 import '../modal/MarvelModal.dart';
 import '../modal/PlayerCardsModal.dart';
@@ -117,6 +119,10 @@ class ApiHelper {
   String GoogleNewsApi =
       "https://google-news13.p.rapidapi.com/entertainment?lr=en-US";
   String HealthNewsApi = "https://google-news13.p.rapidapi.com/health?lr=en-US";
+  String KeywordInsightApi =
+      "https://google-keyword-insight1.p.rapidapi.com/keysuggest?keyword=Email Marketing&location=US&lang=en";
+  String RobloxApi =
+      "https://games.roblox.com/v2/users/1594842210/games?accessFilter=2&limit=10&sortOrder=Asc";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -964,5 +970,41 @@ class ApiHelper {
     log(response.statusCode);
 
     return allHealthNews;
+  }
+
+  Future<List<KeywordInsight>> getKeywordInsightData() async {
+    List<KeywordInsight> allKeywordInsight = [];
+
+    http.Response response =
+        await http.get(Uri.parse(KeywordInsightApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'google-keyword-insight1.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      List allData = jsonDecode(response.body);
+      allKeywordInsight =
+          allData.map((e) => KeywordInsight.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allKeywordInsight;
+  }
+
+  Future<List<Roblox>> getRobloxData() async {
+    List<Roblox> allRoblox = [];
+
+    http.Response response = await http.get(Uri.parse(RobloxApi));
+
+    if (response.statusCode == 200) {
+      Map Data = jsonDecode(response.body);
+      List allData = Data['data'];
+      allRoblox = allData.map((e) => Roblox.fromJson(e)).toList();
+    }
+
+    log(response.statusCode);
+
+    return allRoblox;
   }
 }
