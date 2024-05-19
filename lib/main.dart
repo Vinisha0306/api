@@ -1,3 +1,4 @@
+import 'package:api/controller/Amazon.dart';
 import 'package:api/controller/BhagavadGitacOntroller.dart';
 import 'package:api/controller/BurgerController.dart';
 import 'package:api/controller/CoursesController.dart';
@@ -101,6 +102,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => HealthNewsController()),
         ChangeNotifierProvider(create: (context) => KeywordInsightController()),
         ChangeNotifierProvider(create: (context) => RobloxController()),
+        ChangeNotifierProvider(create: (context) => AmazonController()),
       ],
       child: const MyApp(),
     ),

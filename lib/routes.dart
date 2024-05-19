@@ -3,6 +3,7 @@ import 'package:api/controller/KeywordInsightController.dart';
 import 'package:api/controller/yummlyController.dart';
 import 'package:api/headers.dart';
 import 'package:api/pages/api_Page/Address_api/address_api.dart';
+import 'package:api/pages/api_Page/Amazon_api/Amazon_api.dart';
 import 'package:api/pages/api_Page/BhagavadGita_api/BhagavadGita_api.dart';
 import 'package:api/pages/api_Page/Burger_api/Burger_api.dart';
 import 'package:api/pages/api_Page/Cake_api/Cake_api.dart';
@@ -252,6 +253,10 @@ class AppRoutes {
       'title': 'Roblox Api',
       'routes': 'Roblox_api_page',
     },
+    {
+      'title': 'Amazon Api',
+      'routes': 'Amazon_api_page',
+    },
   ];
 
   static Map<String, WidgetBuilder> routes = {
@@ -305,5 +310,6 @@ class AppRoutes {
     AppRoutes.ApiOptions[46]['routes']: (context) => HealthNewsApiPage(),
     AppRoutes.ApiOptions[47]['routes']: (context) => KeywordInsightApiPage(),
     AppRoutes.ApiOptions[48]['routes']: (context) => RobloxApiPage(),
+    AppRoutes.ApiOptions[49]['routes']: (context) => AmazonApiPage(),
   };
 }

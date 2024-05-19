@@ -1,4 +1,5 @@
 import 'package:api/headers.dart';
+import 'package:api/modal/AmazonModal.dart';
 import 'package:api/modal/HealsthNewsModal.dart';
 import 'package:api/modal/HousePlantsModal.dart';
 import 'package:api/modal/JapaneseModal.dart';
@@ -123,6 +124,8 @@ class ApiHelper {
       "https://google-keyword-insight1.p.rapidapi.com/keysuggest?keyword=Email Marketing&location=US&lang=en";
   String RobloxApi =
       "https://games.roblox.com/v2/users/1594842210/games?accessFilter=2&limit=10&sortOrder=Asc";
+  String AmazonApi =
+      "https://real-time-amazon-data.p.rapidapi.com/search?query=Phone";
 
   Future<List<Product>> getProductData() async {
     List<Product> allProduct = [];
@@ -990,6 +993,26 @@ class ApiHelper {
     log(response.statusCode);
 
     return allKeywordInsight;
+  }
+
+  Future<Amazon> getAmazonData() async {
+    Amazon allAmazon = Amazon(
+        totalProducts: 1, country: "india", domain: "domain", products: []);
+
+    http.Response response = await http.get(Uri.parse(AmazonApi), headers: {
+      'X-RapidAPI-Key': '560709b69amsh10452e5f1d2a5e5p1a1a09jsn3d6027f9e6cb',
+      'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
+    });
+
+    if (response.statusCode == 200) {
+      Map Data = jsonDecode(response.body);
+      Map allData = Data['data'];
+      allAmazon = Amazon.fromJson(allData as Map<String, dynamic>) as Amazon;
+    }
+
+    log(response.statusCode);
+
+    return allAmazon;
   }
 
   Future<List<Roblox>> getRobloxData() async {
